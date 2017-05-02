@@ -1,0 +1,77 @@
+#Module 5
+
+#Challenge 10
+
+'''
+float_loan_amount = [float(row['LoanAmount']) for row in loan_table if row['LoanAmount'] != '']
+
+sort_amount = sorted(float_loan_amount)
+
+sort_length = len(sort_amount)
+
+if (sort_length%2) == 0:
+	index2 = sort_length/2
+	index1 = index2 - 1
+	loan_amount_mean = (sort_amount[index1] + sort_amount[index2])/2.0
+else:
+	loan_amount_mean = sort_amount[sort_length/2]
+
+{'Property_Area': 'Urban', 'Loan_ID': 'LP001002', 'CoapplicantIncome': '0', 'LoanAmount': '',
+ 'Self_Employed': 'No', 'Married': 'No', 'ApplicantIncome': '5849', 'Loan_Amount_Term': '360',
+  'Gender': 'Male', 'Loan_Status': 'Y', 'Dependents': '0', 'Education': 'Graduate', 'Credit_History': '1'}
+'''
+import sys
+
+def report( name, shortd, longd):
+	d = {'Name': name, 'Short': shortd, 'Long': longd}
+	print(str(d))
+
+#Mock data goes first
+
+from csv import DictReader # helps with handling csv formatted data
+from urllib2 import urlopen # helps with pulling data off the web
+url = 'https://docs.google.com/spreadsheets/d/1_artlzgoj6pDBCBfdt9-Jmc9RT9yLsZ0vTnk3zJmt_E/pub?gid=1291197392&single=true&output=csv'
+response = urlopen(url)
+loan_table = [row for row in DictReader(response)]  # a mapping function using identity
+
+xloan_table = loan_table  # in case user screws with loan_table
+
+x_float_loan_amount = [float(row['LoanAmount']) for row in loan_table if row['LoanAmount'] != '']
+
+sorted_loan_amount = sorted(x_float_loan_amount)
+
+
+try:
+	&&&  # paste user code here
+
+except Exception as e:
+	report('Generic error', 'On your own', e)
+	sys.exit(1)
+
+try:
+	loan_amount_median		# does var exist?
+except NameError as e:
+	report('Name error', 'Typically a typo', e)
+	sys.exit(1)
+
+if not isinstance(loan_amount_median, float):
+	report('Data type bug', 'loan_amount_median is not a float', 'No further help available')
+	sys.exit(1)
+
+x_sort_length = len(sorted_loan_amount)
+
+if (x_sort_length%2) == 0:
+	index2 = x_sort_length/2
+	index1 = index2 - 1
+	x_loan_amount_median = (sorted_loan_amount[index1] + sorted_loan_amount[index2])/2.0
+else:
+	x_loan_amount_median = sorted_loan_amount[x_sort_length/2]
+
+try:
+	check = (loan_amount_median == x_loan_amount_median) 
+except Exception as e:
+	report('Generic error', 'On your own', e)
+else:
+	if not check:
+		report('Value bug', 'Wrong value in loan_amount_median of ' + str(loan_amount_median), 'No further help available')
+

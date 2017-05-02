@@ -1,0 +1,506 @@
+alabaster (0.7.9) is 217 days out of date. Latest is 0.7.10
+alembic (0.8.6) is 320 days out of date. Latest is 0.9.1
+aniso8601 (1.1.0) is 365 days out of date. Latest is 1.2.0
+ansible (2.1.0.0) is 322 days out of date. Latest is 2.3.0.0
+argh (0.26.2) is up to date
+async (0.6.2) is up to date
+attrs (16.2.0) is 68 days out of date. Latest is 16.3.0
+Babel (2.3.4) is 336 days out of date. Latest is 2.4.0
+backports-abc (0.4) is 424 days out of date. Latest is 0.5
+backports.ssl (0.0.9) is up to date
+backports.ssl-match-hostname (3.5.0.1) is up to date
+bashplotlib (0.6.5) is up to date
+bcrypt (3.1.1) is 157 days out of date. Latest is 3.1.3
+beanstalkc (0.4.0) is up to date
+BeautifulSoup (3.2.1) is up to date
+beautifulsoup4 (4.4.1) is 461 days out of date. Latest is 4.5.3
+biopython (1.67) is 302 days out of date. Latest is 1.69
+bleach (1.4.3) is 289 days out of date. Latest is 2.0.0
+blessings (1.6) is up to date
+blinker (1.4) is up to date
+boto (2.41.0) is 238 days out of date. Latest is 2.46.1
+bottle (0.12.9) is 442 days out of date. Latest is 0.12.13
+bottlenose (0.6.4) is 220 days out of date. Latest is 1.1.2
+bpython (0.15) is 267 days out of date. Latest is 0.16
+BTrees (4.3.1) is 253 days out of date. Latest is 4.4.1
+bz2file (0.98) is up to date
+bzr (2.7.0) is up to date
+cairocffi (0.7.2) is 548 days out of date. Latest is 0.8.0
+CairoSVG (1.0.22) is 276 days out of date. Latest is 2.0.2
+census (0.7) is 500 days out of date. Latest is 0.8.1
+certifi (2016.9.26) is 203 days out of date. Latest is 2017.4.17
+cffi (1.7.0) is 273 days out of date. Latest is 1.10.0
+Chameleon (2.24) is 482 days out of date. Latest is 3.1
+chardet (2.3.0) is 56 days out of date. Latest is 3.0.2
+Cheetah (2.4.4) is up to date
+CherryPy (6.0.2) is 262 days out of date. Latest is 10.2.1
+click (6.6) is 46 days out of date. Latest is 6.7
+click-plugins (1.0.3) is up to date
+cligj (0.4.0) is up to date
+colorama (0.3.7) is 411 days out of date. Latest is 0.3.8
+configobj (5.0.6) is up to date
+configparser (3.5.0) is up to date
+CoolProp (6.0.0) is 184 days out of date. Latest is 6.1.0
+coverage (4.1) is 241 days out of date. Latest is 4.3.4
+cryptography (1.4) is 278 days out of date. Latest is 1.8.1
+cssselect (0.9.2) is 208 days out of date. Latest is 1.0.1
+curtsies (0.2.6) is 285 days out of date. Latest is 0.2.11
+cvxopt (1.1.6) is 1092 days out of date. Latest is 1.1.9
+cycler (0.10.0) is up to date
+cypari (1.2.2) is 673 days out of date. Latest is 2.2.0
+Cython (0.24) is 247 days out of date. Latest is 0.25.2
+dataset (0.6.4) is 282 days out of date. Latest is 0.8.0
+decorator (4.0.10) is 222 days out of date. Latest is 4.0.11
+dectate (0.12) is 79 days out of date. Latest is 0.13
+defusedxml (0.4.1) is 1414 days out of date. Latest is 0.5.0
+Django (1.9.8) is 259 days out of date. Latest is 1.11
+django-blog-zinnia (0.17) is 111 days out of date. Latest is 0.18.1
+django-bootstrap-form (3.2.1) is up to date
+django-braces (1.9.0) is 245 days out of date. Latest is 1.11.0
+django-classy-tags (0.7.2) is 179 days out of date. Latest is 0.8.0
+django-cms (3.3.0) is 242 days out of date. Latest is 3.4.2
+django-codemirror-widget (0.4.0) is 852 days out of date. Latest is 0.4.1
+django-contrib-comments (1.7.2) is 183 days out of date. Latest is 1.8.0
+django-cors-headers (1.1.0) is 630 days out of date. Latest is 2.0.2
+django-formtools (1.0) is 648 days out of date. Latest is 2.0
+django-mptt (0.8.4) is 232 days out of date. Latest is 0.8.7
+django-oauth-toolkit (0.10.0) is 437 days out of date. Latest is 0.12.0
+django-object-tools (1.9) is up to date
+django-openid-auth (0.9) is 311 days out of date. Latest is 0.14
+django-registration (2.1.2) is 145 days out of date. Latest is 2.2
+django-sekizai (0.9.0) is 265 days out of date. Latest is 0.10.0
+django-social-auth (0.7.28) is up to date
+django-tagging (0.4.3) is 126 days out of date. Latest is 0.4.5
+django-treebeard (4.0.1) is 209 days out of date. Latest is 4.1.0
+django-xmlrpc (0.1.5) is 1256 days out of date. Latest is 0.1.7
+django4facebook (0.1.0) is up to date
+djangocms-admin-style (1.2.3) is 300 days out of date. Latest is 1.2.7
+docopt (0.6.2) is up to date
+docutils (0.12) is 581 days out of date. Latest is 0.13.1
+dominate (2.2.1) is 138 days out of date. Latest is 2.3.1
+dropbox (6.5.0) is 253 days out of date. Latest is 7.2.1
+dulwich (0.14.1) is 257 days out of date. Latest is 0.17.3
+easydev (0.9.25) is 250 days out of date. Latest is 0.9.34
+EasyProcess (0.2.2) is 230 days out of date. Latest is 0.2.3
+elaphe (0.6.0) is up to date
+entrypoints (0.2.2) is up to date
+enum34 (1.1.6) is up to date
+epydoc (3.0.1) is up to date
+et-xmlfile (1.0.1) is up to date
+evernote (1.25.2) is up to date
+Fabric (1.11.1) is 244 days out of date. Latest is 1.13.1
+facebook-sdk (1.0.0) is 128 days out of date. Latest is 2.0.0
+falcon (1.0.0) is 168 days out of date. Latest is 1.1.0
+feedgenerator (1.8) is 159 days out of date. Latest is 1.9
+feedparser (5.2.1) is up to date
+filebrowser-safe (0.4.3) is 406 days out of date. Latest is 0.4.7
+Fiona (1.7.0.post2) is 277 days out of date. Latest is 1.7.5
+Flask (0.11.1) is 297 days out of date. Latest is 0.12.1
+Flask-Admin (1.4.2) is 270 days out of date. Latest is 1.5.0
+Flask-Babel (0.11.1) is 322 days out of date. Latest is 0.11.2
+Flask-Bcrypt (0.7.1) is up to date
+Flask-Bootstrap (3.3.6.0) is 235 days out of date. Latest is 3.3.7.1
+Flask-HTTPAuth (3.1.2) is 284 days out of date. Latest is 3.2.2
+Flask-Login (0.3.2) is 384 days out of date. Latest is 0.4.0
+Flask-Mail (0.9.1) is up to date
+Flask-OpenID (1.2.5) is up to date
+Flask-RESTful (0.3.5) is up to date
+Flask-Script (2.0.5) is up to date
+Flask-SQLAlchemy (2.1) is 493 days out of date. Latest is 2.2
+Flask-WhooshAlchemy (0.56) is up to date
+Flask-WTF (0.12) is 551 days out of date. Latest is 0.14.2
+funcsigs (1.0.2) is up to date
+future (0.15.2) is 412 days out of date. Latest is 0.16.0
+futures (3.0.5) is 424 days out of date. Latest is 3.1.1
+FXrays (1.3.1) is 629 days out of date. Latest is 1.3.3
+GDAL (1.9.1) is 1701 days out of date. Latest is 2.1.3
+gdata (2.0.18) is up to date
+Genshi (0.7) is up to date
+gensim (0.13.1) is 290 days out of date. Latest is 2.0.0
+GeoIP (1.3.2) is up to date
+geopy (1.11.0) is up to date
+gevent (1.1.1) is 282 days out of date. Latest is 1.2.1
+geventhttpclient (1.3.0) is 37 days out of date. Latest is 1.3.1
+gitdb (0.6.4) is up to date
+GitPython (2.0.6) is 260 days out of date. Latest is 2.1.3
+gmpy (1.17) is up to date
+google-api-python-client (1.5.1) is 264 days out of date. Latest is 1.6.2
+grappelli-safe (0.4.2) is 418 days out of date. Latest is 0.4.6
+greenlet (0.4.10) is 234 days out of date. Latest is 0.4.12
+grequests (0.3.0) is up to date
+grok (1.14.1) is up to date
+grokcore.annotation (1.5.1) is up to date
+grokcore.catalog (2.2.1) is up to date
+grokcore.chameleon (1.0.4) is up to date
+grokcore.component (2.7) is up to date
+grokcore.content (1.3.1) is up to date
+grokcore.formlib (1.11) is up to date
+grokcore.json (1.2.1) is up to date
+grokcore.layout (1.6.1) is up to date
+grokcore.message (0.4.3) is up to date
+grokcore.rest (1.3) is up to date
+grokcore.security (1.6.3) is up to date
+grokcore.site (1.7.1) is 235 days out of date. Latest is 1.8
+grokcore.traverser (1.2.1) is up to date
+grokcore.view (2.11) is up to date
+grokcore.viewlet (1.11) is up to date
+grokcore.xmlrpc (1.2.1) is up to date
+hg-git (0.8.5) is 442 days out of date. Latest is 0.8.6
+html5lib (0.9999999) is 413 days out of date. Latest is 0.999999999
+http-parser (0.8.3) is up to date
+httplib2 (0.9.2) is 497 days out of date. Latest is 0.10.3
+idna (2.1) is 351 days out of date. Latest is 2.5
+imagesize (0.7.1) is up to date
+IMAPClient (1.0.1) is 244 days out of date. Latest is 1.0.2
+importlib (1.0.4) is up to date
+importscan (0.1) is up to date
+incf.countryutils (1.0) is up to date
+inflection (0.3.1) is up to date
+Decoding the JSON response for iotop (None) failed
+ipaddress (1.0.16) is 379 days out of date. Latest is 1.0.18
+ipykernel (4.5.0) is 222 days out of date. Latest is 4.6.1
+ipyparallel (5.0.1) is 368 days out of date. Latest is 6.0.2
+ipython (4.1.2) is 414 days out of date. Latest is 6.0.0
+ipython-genutils (0.1.0) is 689 days out of date. Latest is 0.2.0
+ipywidgets (5.2.2) is 228 days out of date. Latest is 6.0.0
+isodate (0.5.4) is up to date
+itsdangerous (0.24) is up to date
+jdcal (1.2) is 313 days out of date. Latest is 1.3
+jellyfish (0.5.1) is 346 days out of date. Latest is 0.5.6
+Jinja2 (2.8) is 616 days out of date. Latest is 2.9.6
+jsonschema (2.5.1) is 607 days out of date. Latest is 2.6.0
+jupyter (1.0.0) is up to date
+jupyter-client (4.3.0) is 300 days out of date. Latest is 5.0.1
+jupyter-console (5.0.0) is 212 days out of date. Latest is 5.1.0
+jupyter-core (4.2.0) is 154 days out of date. Latest is 4.3.0
+keepalive (0.5) is up to date
+la (0.6.0) is up to date
+linecache2 (1.0.0) is up to date
+Logbook (1.0.0) is up to date
+lxml (3.6.0) is 333 days out of date. Latest is 3.7.3
+Mako (1.0.4) is 243 days out of date. Latest is 1.0.6
+marisa-trie (0.7.2) is 705 days out of date. Latest is 0.7.4
+Markdown (2.6.6) is 310 days out of date. Latest is 2.6.8
+MarkupSafe (0.23) is 1034 days out of date. Latest is 1.0
+martian (0.15) is up to date
+matplotlib (1.5.1) is 375 days out of date. Latest is 2.0.0
+mechanize (0.2.5) is 2176 days out of date. Latest is 0.3.1
+mercurial (3.8.4) is 290 days out of date. Latest is 4.1.3
+Mezzanine (4.1.0) is 418 days out of date. Latest is 4.2.3
+mimerender (0.6.0) is up to date
+mistune (0.7.3) is 257 days out of date. Latest is 0.7.4
+mock (2.0.0) is up to date
+mod-pywebsocket (0.7.9) is up to date
+moin (1.9.8) is 745 days out of date. Latest is 1.9.9
+more-itertools (2.2) is 1485 days out of date. Latest is 3.0.0
+morepath (0.16.2) is 144 days out of date. Latest is 0.18
+mots-vides (2015.5.11) is up to date
+mplh5canvas (0.7) is up to date
+mpmath (0.19) is up to date
+munch (2.0.4) is 502 days out of date. Latest is 2.1.1
+mysql-connector-python (2.0.4) didn't return a date property
+MySQL-python (1.2.1_p2) didn't return a date property
+nbconvert (4.2.0) is 287 days out of date. Latest is 5.1.1
+nbformat (4.1.0) is 195 days out of date. Latest is 4.3.0
+ndg-httpsclient (0.4.1) is 42 days out of date. Latest is 0.4.2
+netCDF4 (1.2.4) is 267 days out of date. Latest is 1.2.7
+netifaces (0.10.4) is 826 days out of date. Latest is 0.10.5
+networkx (1.11) is up to date
+nltk (3.2.1) is 266 days out of date. Latest is 3.2.2
+normality (0.2.4) is 578 days out of date. Latest is 0.4.2
+nose (1.3.7) is up to date
+notebook (4.2.2) is 243 days out of date. Latest is 5.0.0
+numexpr (2.6.0) is 242 days out of date. Latest is 2.6.2
+numpy (1.11.1) is 265 days out of date. Latest is 1.12.1
+oauth (1.0.1) is up to date
+oauth2 (1.9.0.post1) is up to date
+oauth2client (3.0.0) is 77 days out of date. Latest is 4.0.0
+oauthlib (1.0.3) is 581 days out of date. Latest is 2.0.2
+openopt (0.5402) is 414 days out of date. Latest is 0.5625
+openpyxl (2.3.5) is 367 days out of date. Latest is 2.4.6
+Orange (2.7.8) is up to date
+Orange-Text (1.2a1) is up to date
+ordereddict (1.1) is up to date
+oursql (0.9.3.2) is up to date
+pandas (0.18.1) is 233 days out of date. Latest is 0.19.2
+paramiko (2.0.1) is 244 days out of date. Latest is 2.1.2
+parsel (1.0.3) is 115 days out of date. Latest is 1.1.0
+Paste (2.0.3) is up to date
+PasteDeploy (1.5.2) is up to date
+pathlib2 (2.1.0) is 442 days out of date. Latest is 2.2.1
+pathtools (0.1.2) is up to date
+patsy (0.4.1) is up to date
+Pattern (2.6) is up to date
+pbr (1.10.0) is 331 days out of date. Latest is 3.0.0
+Decoding the JSON response for pdflatex (None) failed
+pdfminer (20140328) is out of date. Latest is 20100619p1
+peewee (2.1.2) is 1416 days out of date. Latest is 2.9.2
+pelican (3.6.3) is 514 days out of date. Latest is 3.7.1
+pep8 (1.7.0) is up to date
+persistent (4.2.1) is 331 days out of date. Latest is 4.2.4.2
+pexpect (4.2.0) is 47 days out of date. Latest is 4.2.1
+pickleshare (0.7.4) is up to date
+Pillow (3.3.1) is 229 days out of date. Latest is 4.1.0
+Pinax (0.7) didn't return a date property
+Pint (0.7.2) is 410 days out of date. Latest is 0.8
+pisa (3.0.33) is up to date
+Pivy (0.3.0) didn't return a date property
+plink (1.9.1) is 270 days out of date. Latest is 2.0
+plotly (1.12.3) is 272 days out of date. Latest is 2.0.7
+pp (1.6.5) is up to date
+praw (3.5.0) is 287 days out of date. Latest is 4.4.0
+prettytable (0.7.2) is out of date. Latest is 7
+prompt-toolkit (1.0.8) is 161 days out of date. Latest is 1.0.14
+protobuf (3.0.0b2) is 399 days out of date. Latest is 3.2.0
+psutil (4.3.0) is 295 days out of date. Latest is 5.2.2
+psycopg2 (2.6.2) is 248 days out of date. Latest is 2.7.1
+ptyprocess (0.5.1) is up to date
+pudb (2016.2) is 302 days out of date. Latest is 2017.1.2
+py-bcrypt (0.4) is up to date
+py2neo (3.1.1) is 48 days out of date. Latest is 3.1.2
+PyAMF (0.8.0) is up to date
+pyasn1 (0.1.9) is 516 days out of date. Latest is 0.2.3
+pyasn1-modules (0.0.8) is up to date
+PyChart (1.39) didn't return a date property
+pycparser (2.14) is 506 days out of date. Latest is 2.17
+pycrypto (2.6.1) is up to date
+pycsp (0.9.2) is up to date
+pycurl (7.43.0) is up to date
+pyDatalog (0.17.1) is up to date
+PyDispatcher (2.0.5) is up to date
+pydot (1.2.2) is 96 days out of date. Latest is 1.2.3
+pydub (0.16.4) is 314 days out of date. Latest is 0.18.0
+pyenchant (1.6.6) is 796 days out of date. Latest is 1.6.8
+pyfits (3.4) is up to date
+pyflakes (1.2.3) is 242 days out of date. Latest is 1.5.0
+pygal (2.2.3) is 184 days out of date. Latest is 2.3.1
+pygeoip (0.3.2) is up to date
+Pygments (2.1.3) is 326 days out of date. Latest is 2.2.0
+pygraphviz (1.3.1) is up to date
+pyhdf (0.8.3) didn't return a date property
+PyJWT (1.4.1) is 280 days out of date. Latest is 1.5.0
+Pykka (1.2.1) is up to date
+pymc (2.3.6) is up to date
+pymongo (3.2.2) is 258 days out of date. Latest is 3.4.0
+pyodbc (3.0.10) is 700 days out of date. Latest is 4.0.16
+pyOpenSSL (16.0.0) is 397 days out of date. Latest is 17.0.0
+pyparsing (2.1.5) is 265 days out of date. Latest is 2.2.0
+PyPDF2 (1.26.0) is up to date
+pypdfocr (0.9.0) is 223 days out of date. Latest is 0.9.1
+pypdftk (0.3) is up to date
+Pyphen (0.9.4) is up to date
+pypng (0.0.18) is up to date
+pyproj (1.9.5.1) is up to date
+pyquery (1.2.13) is 185 days out of date. Latest is 1.2.17
+pyramid (1.7) is 297 days out of date. Latest is 1.8.3
+PySAL (1.5.0) is 1408 days out of date. Latest is 1.13.0
+pyserial (3.1.1) is 268 days out of date. Latest is 3.3
+pyspotify (2.0.5) is up to date
+PyStemmer (1.3.0) is up to date
+pytesseract (0.1.6) is up to date
+python-amazon-simple-product-api (2.1.0) is 303 days out of date. Latest is 2.2.11
+python-dateutil (2.5.3) is 201 days out of date. Latest is 2.6.0
+python-editor (1.0.1) is 165 days out of date. Latest is 1.0.3
+python-gflags (3.0.5) is 263 days out of date. Latest is 3.1.1
+python-instagram (1.3.2) is up to date
+python-ldap (2.4.25) is 393 days out of date. Latest is 2.4.32
+python-Levenshtein (0.12.0) is up to date
+python-magic (0.4.12) is 258 days out of date. Latest is 0.4.13
+python-mcrypt (1.1) didn't return a date property
+python-mhash (1.4) didn't return a date property
+python-mimeparse (1.5.2) is 173 days out of date. Latest is 1.6.0
+python-openid (2.2.5) is up to date
+python-slugify (1.2.0) is 451 days out of date. Latest is 1.2.4
+python-social-auth (0.2.19) is 279 days out of date. Latest is 0.3.6
+python3-openid (3.0.10) is 329 days out of date. Latest is 3.1.0
+pytz (2016.4) is 341 days out of date. Latest is 2017.2
+PyVirtualDisplay (0.2) is 213 days out of date. Latest is 0.2.1
+PyYAML (3.11) is 885 days out of date. Latest is 3.12
+pyzmq (15.3.0) is 125 days out of date. Latest is 16.0.2
+qrcode (5.3) is up to date
+qtconsole (4.2.1) is 363 days out of date. Latest is 4.3.0
+Quandl (3.0.1) is 281 days out of date. Latest is 3.1.0
+Decoding the JSON response for quantlib (None) failed
+queuelib (1.4.2) is up to date
+rdflib (4.2.1) is 536 days out of date. Latest is 4.2.2
+redis (2.10.5) is up to date
+reg (0.10) is 79 days out of date. Latest is 0.11
+regex (2016.10.22) is 183 days out of date. Latest is 2017.04.23
+remix (2.4.0) is up to date
+reportlab (3.3.0) is 383 days out of date. Latest is 3.4.0
+repoze.lru (0.6) is up to date
+requests (2.10.0) is 269 days out of date. Latest is 2.13.0
+requests-cache (0.4.12) is 279 days out of date. Latest is 0.4.13
+requests-oauthlib (0.6.2) is 216 days out of date. Latest is 0.8.0
+Decoding the JSON response for resolver-test (None) failed
+restkit (4.2.2) is up to date
+RestrictedPython (3.6.0) is up to date
+rpy2 (2.5.2) is 761 days out of date. Latest is 2.8.5
+rsa (3.4.2) is up to date
+ruffus (2.6.3) is up to date
+s3cmd (1.6.1) is up to date
+scikit-learn (0.17.1) is 269 days out of date. Latest is 0.18.1
+scikits.statsmodels (0.3.1) is up to date
+scipy (0.18.0) is 226 days out of date. Latest is 0.19.0
+Scrapy (1.1.0) is 302 days out of date. Latest is 1.3.3
+selenium (2.53.6) is 296 days out of date. Latest is 3.4.0
+service-identity (16.0.0) is up to date
+setproctitle (1.1.10) is up to date
+Shapely (1.5.16) is 209 days out of date. Latest is 1.5.17.post1
+simplegeneric (0.8.1) is up to date
+SimpleHMMER (0.2.3) is up to date
+simplejson (3.8.2) is 255 days out of date. Latest is 3.10.0
+simpy (3.0.9) is 75 days out of date. Latest is 3.0.10
+singledispatch (3.4.0.3) is up to date
+six (1.10.0) is up to date
+smart-open (1.3.3) is 331 days out of date. Latest is 1.5.2
+smmap (0.9.0) is up to date
+snappy (2.4.1) is 308 days out of date. Latest is 2.5.1
+snowballstemmer (1.2.1) is up to date
+soaplib (1.0.0) is up to date
+socketpool (0.5.3) is up to date
+sockjs-tornado (1.0.3) is up to date
+South (1.0.2) is up to date
+SPARQLWrapper (1.7.6) is 355 days out of date. Latest is 1.8.0
+speaklater (1.3) is up to date
+spectrum (0.6.1) is 370 days out of date. Latest is 0.6.2
+spherogram (1.5.1) is 260 days out of date. Latest is 1.6.1
+Sphinx (1.4.4) is 295 days out of date. Latest is 1.5.5
+splinter (0.7.3) is 449 days out of date. Latest is 0.7.5
+SQLAlchemy (1.0.14) is 271 days out of date. Latest is 1.1.9
+sqlalchemy-migrate (0.10.0) is 547 days out of date. Latest is 0.11.0
+sqlparse (0.2.1) is 150 days out of date. Latest is 0.2.3
+statsmodels (0.6.1) is 798 days out of date. Latest is 0.8.0
+stevedore (1.15.0) is 269 days out of date. Latest is 1.21.0
+stripe (1.36.0) is 280 days out of date. Latest is 1.53.0
+suds (0.4) is up to date
+svn (0.3.40) is 108 days out of date. Latest is 0.3.44
+sympy (0.7.2) is 1239 days out of date. Latest is 1.0
+TA-Lib (0.4.9) is 444 days out of date. Latest is 0.4.10
+tables (3.2.3.1) is 288 days out of date. Latest is 3.4.2
+tabulate (0.7.7) is up to date
+Tempita (0.5.2) is up to date
+terminado (0.6) is up to date
+Decoding the JSON response for texcaller (None) failed
+textblob (0.11.1) is 376 days out of date. Latest is 0.12.0
+tinycss (0.3) is 1466 days out of date. Latest is 0.4
+TornadIO2 (0.0.3) is 208 days out of date. Latest is 0.0.4
+tornado (4.3) is 530 days out of date. Latest is 4.5.1
+Trac (1.0.12) is 267 days out of date. Latest is 1.2.1
+traceback2 (1.4.0) is up to date
+traitlets (4.2.2) is 237 days out of date. Latest is 4.3.2
+transaction (1.6.1) is 273 days out of date. Latest is 2.1.2
+translationstring (1.3) is up to date
+tweepy (3.5.0) is up to date
+twilio (5.4.0) is 398 days out of date. Latest is 6.0.0
+Twisted (16.3.0) is 219 days out of date. Latest is 17.1.0
+twitter (1.17.1) is up to date
+tzlocal (1.2.2) is 412 days out of date. Latest is 1.4
+uncertainties (2.4.8.1) is 140 days out of date. Latest is 3.0.1
+unittest2 (1.1.0) is up to date
+update-checker (0.11) is 785 days out of date. Latest is 0.16
+uritemplate (0.6) is 1097 days out of date. Latest is 3.0.0
+urllib3 (1.16) is 221 days out of date. Latest is 1.20
+urwid (1.3.1) is up to date
+us (0.9.1) is up to date
+venusian (1.0) is up to date
+virtualenv (15.0.3) is 102 days out of date. Latest is 15.1.0
+virtualenv-clone (0.2.6) is up to date
+virtualenvwrapper (4.7.2) is up to date
+visitor (0.1.3) is up to date
+Decoding the JSON response for VTK (None) failed
+w3lib (1.14.2) is 303 days out of date. Latest is 1.17.0
+waitress (0.9.0) is 295 days out of date. Latest is 1.0.2
+Wand (0.4.3) is 143 days out of date. Latest is 0.4.4
+watchdog (0.8.3) is up to date
+wcwidth (0.1.7) is up to date
+WeasyPrint (0.29) is 253 days out of date. Latest is 0.36
+web.py (0.38) is up to date
+webapp2 (2.5.2) is up to date
+WebOb (1.6.1) is 299 days out of date. Latest is 1.7.2
+WebTest (2.0.23) is 236 days out of date. Latest is 2.0.27
+Werkzeug (0.11.10) is 295 days out of date. Latest is 0.12.1
+wheezy.caching (0.1.114) is up to date
+wheezy.core (0.1.140) is up to date
+wheezy.html (0.1.147) is up to date
+wheezy.http (0.1.344) is up to date
+wheezy.routing (0.1.157) is up to date
+wheezy.security (0.1.64) is up to date
+wheezy.template (0.1.167) is up to date
+wheezy.validation (0.1.135) is up to date
+wheezy.web (0.1.485) is up to date
+Whoosh (2.7.4) is up to date
+widgetsnbextension (1.2.6) is 228 days out of date. Latest is 2.0.0
+WTForms (2.1) is up to date
+wxPython (2.9.1.1) didn't return a date property
+wxPython-common (2.6.3.3) didn't return a date property
+xlrd (1.0.0) is up to date
+xlutils (2.0.0) is up to date
+xlwt (1.1.2) is 209 days out of date. Latest is 1.2.0
+z3c.autoinclude (0.3.6) is 207 days out of date. Latest is 0.3.7
+z3c.flashmessage (1.3) is 2111 days out of date. Latest is 2.0
+z3c.pt (2.2.3) is 1553 days out of date. Latest is 3.0
+zbar (0.10) is up to date
+zc.buildout (2.5.2) is 296 days out of date. Latest is 2.9.3
+zc.catalog (1.6) is up to date
+zc.lockfile (1.2.1) is up to date
+ZConfig (3.1.0) is up to date
+zdaemon (4.1.0) is 601 days out of date. Latest is 4.2.0
+ZEO (4.2.1) is 276 days out of date. Latest is 5.1.0
+zipline (0.7.0) is 959 days out of date. Latest is 1.1.0
+ZODB (4.4.2) is 276 days out of date. Latest is 5.2.3
+ZODB3 (3.11.0) is up to date
+zodbpickle (0.6.0) is up to date
+zope.annotation (4.4.1) is up to date
+zope.app.appsetup (4.0.0a1) is 1254 days out of date. Latest is 4.0.0
+zope.app.wsgi (4.0.0a4) is 1238 days out of date. Latest is 4.0.0
+zope.authentication (4.2.1) is up to date
+zope.browser (2.1.0) is up to date
+zope.browserpage (4.1.0) is up to date
+zope.browserresource (4.1.0) is up to date
+zope.catalog (4.1.0) is up to date
+zope.component (4.2.2) is 448 days out of date. Latest is 4.3.0
+zope.configuration (4.0.3) is up to date
+zope.container (4.1.0) is up to date
+zope.contentprovider (4.0.0) is up to date
+zope.contenttype (4.1.0) is 608 days out of date. Latest is 4.2.0
+zope.datetime (4.1.0) is up to date
+zope.deprecation (4.1.2) is 663 days out of date. Latest is 4.2.0
+zope.dottedname (4.1.0) is up to date
+zope.error (4.3.0) is up to date
+zope.errorview (0.11) is up to date
+zope.event (4.2.0) is up to date
+zope.exceptions (4.0.8) is 607 days out of date. Latest is 4.1.0
+zope.filerepresentation (4.1.0) is up to date
+zope.formlib (4.3.0) is up to date
+zope.generations (3.7.1) is up to date
+zope.i18n (4.1.0) is up to date
+zope.i18nmessageid (4.0.3) is up to date
+zope.index (4.2.0) is up to date
+zope.interface (4.2.0) is 315 days out of date. Latest is 4.4.0
+zope.intid (4.1.0) is 711 days out of date. Latest is 4.2.0
+zope.keyreference (4.1.0) is up to date
+zope.lifecycleevent (4.1.0) is up to date
+zope.location (4.0.3) is up to date
+zope.login (2.0.0) is up to date
+zope.minmax (2.1.0) is up to date
+zope.pagetemplate (4.2.1) is up to date
+zope.password (4.2.0) is up to date
+zope.principalregistry (4.0.0) is up to date
+zope.processlifetime (2.1.0) is up to date
+zope.proxy (4.2.0) is 353 days out of date. Latest is 4.2.1
+zope.ptresource (4.0.0) is up to date
+zope.publisher (4.3.0) is up to date
+zope.schema (4.4.2) is up to date
+zope.security (4.0.3) is up to date
+zope.securitypolicy (4.0.0) is 681 days out of date. Latest is 4.1.0
+zope.session (4.1.0) is up to date
+zope.site (4.0.0) is up to date
+zope.size (4.1.0) is up to date
+zope.tal (4.2.0) is up to date
+zope.tales (4.1.1) is up to date
+zope.testbrowser (4.0.4) is 1233 days out of date. Latest is 5.2
+zope.testing (4.5.0) is 489 days out of date. Latest is 4.6.1
+zope.traversing (4.0.0) is 867 days out of date. Latest is 4.1.0
+zope.viewlet (4.0.0) is up to date
+Your requirements are 104436 days out of date

@@ -1,0 +1,1017 @@
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Poco Lesson</title>
+<link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}images/favicon.ico"/>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{{STATIC_URL}}codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="{{STATIC_URL}}codemirror/addon/hint/show-hint.css">
+<link rel="stylesheet" href="{{STATIC_URL}}codemirror/addon/hint/show-hint.css">
+
+<style>
+
+.dropdown-menu:before {
+    position: absolute;
+    top: -7px;
+    left: 9px;
+    display: inline-block;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-left: 7px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    content: '';
+}
+
+.dropdown-menu:after {
+    position: absolute;
+    top: -6px;
+    left: 10px;
+    display: inline-block;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #ffffff;
+    border-left: 6px solid transparent;
+    content: '';
+}
+.breadcrumb li a    {
+    background:#eee;
+}
+.breadcrumb {
+    background:#eee;
+}
+.breadcrumb-trail * { color: red!important; }
+
+code {
+    background: hsl(220, 80%, 90%);
+}
+
+pre {
+    white-space: pre-wrap;
+    background: hsl(30,80%,90%);
+}
+.panel {
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.05);
+    border: 0px solid #dddddd;
+}
+.table-border tbody tr td, .table-border tbody tr th, .table-border thead tr th {
+    border-bottom: 2px solid white;
+    border-color: white;
+    vertical-align: middle;
+    text-align: left;
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.tab-pane{
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding: 10px;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
+    font-size:16px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-height: 46px;
+    height: auto;
+    background-color:white;
+    padding-top:30px;
+}
+.nav-tabs-affix.affix {
+    position:fixed;
+    top:100px;
+    width:100%;
+    height:auto;
+    z-index:10;
+}
+
+@media (min-width: 768px){
+    #left {
+        position: absolute;
+        left: 0;
+        width: 75%;
+        overflow-y: scroll;
+    }
+
+    #right-disqus{
+        background-color:white;
+        padding-top: 10px;
+        position: fixed;
+        top: 250px;
+        bottom: 0;
+        right: 0;
+        overflow-y: scroll;
+        width: auto%;
+    }
+}
+
+.CodeMirror {
+    border:1px solid grey;
+    width:100%;
+    height:200px;
+    z-index:1;
+}
+
+.spinnerbox {
+    display:none; /* Hide the DIV */
+    position:fixed;
+    height:20%;
+    width:100%;
+    align:center;
+    left: 0px;
+    top: 278px;
+    z-index:100;
+    margin-left: 15px;
+    padding:15px;
+}
+
+.modal-dialog {
+    padding-top: 10%;
+}
+
+.spinner {
+    display: inline-block;
+    opacity: 0;
+    width: 0;
+
+    -webkit-transition: opacity 0.25s, width 0.25s;
+    -moz-transition: opacity 0.25s, width 0.25s;
+    -o-transition: opacity 0.25s, width 0.25s;
+    transition: opacity 0.25s, width 0.25s;
+}
+
+.has-spinner.active {
+    cursor:progress;
+}
+
+.has-spinner.active .spinner {
+    opacity: 1;
+    width: auto; /* This doesn't work, just fix for unkown width elements */
+}
+</style>
+
+<script src="{{STATIC_URL}}codemirror/lib/codemirror.js"></script>
+<script src="{{STATIC_URL}}codemirror/addon/hint/show-hint.js"></script>
+<script src="{{STATIC_URL}}codemirror/addon/hint/javascript-hint.js"></script>
+<script src="{{STATIC_URL}}codemirror/addon/display/autorefresh.js"></script>
+<script src="{{STATIC_URL}}codemirror/mode/javascript/javascript.js"></script>
+<script src="{{STATIC_URL}}codemirror/mode/python/python.js"></script>
+<script src="{{STATIC_URL}}codemirror/mode/markdown/markdown.js"></script>
+
+<script src="{{STATIC_URL}}js-cookie/src/js.cookie.js"></script>
+
+<script src="{{STATIC_URL}}jquery/dist/jquery.js"></script>
+<script src="{{STATIC_URL}}bootstrap/js/bootstrap.js"></script>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script type="text/javascript">
+<!--
+
+var notes = [];
+
+function submitOnEnter(myfield, e){
+    var keycode;
+    if(window.event)
+        keycode = window.event.keyCode;
+    else if(e)
+        keycode = e.which;
+    else
+        return true;
+
+    if (keycode == 13){
+        myfield.form.submit();
+        return false;
+    }else
+        return true;
+}
+
+
+
+function init(){
+
+    var token = sessionStorage.getItem('token');
+
+    //Should we revalidate???
+    /*
+    //This asks the validate servlet for our username (based on the session token).
+    var http = new XMLHttpRequest();
+    var params = "token="+token;
+    http.open("POST", "../validate", true);
+
+    //Send the proper header information along with the request
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+    console.log("Response: "+http.responseText);
+
+    if( http.responseText != null && http.responseText.length > 0 && http.responseText.trim() != "fail" ){
+
+    success();
+
+    //if fail to validate redirect to login page
+    }else{
+
+    window.location.href = "login.html";
+    }
+
+
+    }
+    }
+    http.send(params);
+     */
+    success();
+
+
+
+}
+
+
+function success(){
+
+    var username = sessionStorage.getItem('username');
+    var clientname = sessionStorage.getItem('clientname');
+
+    if( clientname != null && clientname.length > 0 )
+        $("#username").text(username+" ("+clientname+")");
+    else
+        $("#username").text(username);
+
+
+    //load other stuff here?
+}
+
+
+
+function loadResults(){
+
+    $('#resultsTable').hide();
+    $('#previewTable').show();
+    $(".spinnerbox").show();
+
+    setTimeout(function(){
+
+            $(".spinnerbox").hide();
+
+            $('#previewTable').hide();
+            $('#resultsTable').show();
+
+            },3000);
+}
+
+function showHint(num){
+    $('#myModal'+num).modal('show')
+}
+
+function showMore(){
+    $('#less').hide();
+    $('#more').show();
+}
+
+function showLess(){
+    $('#more').hide();
+    $('#less').show();
+}
+
+function postNote(videoID, updated_notes, currentTime) {
+    //ajax post
+    var csrftoken = Cookies.get('csrftoken');
+
+    $.ajax({
+method: "POST",
+url: "{{request.path}}",
+beforeSend: function( xhr ) {
+xhr.setRequestHeader("X-CSRFToken", csrftoken);
+},
+data: { videoID: videoID , html_notes: updated_notes, time: currentTime}
+
+})
+.done(function( response) {
+        console.log( "Note saved to DB: " + response);
+        });
+}
+
+function takeNote(pauseOrPlay, ID){
+
+    var video = document.getElementById(ID);
+    if( pauseOrPlay )
+        video.pause();
+    else
+        video.play();
+}
+
+function saveNote(ID){
+
+    var video = document.getElementById(ID);
+    var IDnum = ID.split("_").pop();
+
+    notes.push({text:$('#newNote'+IDnum).val(),time:video.currentTime});
+
+    var minutes = parseInt( video.currentTime / 60 ) % 60;
+    var seconds = Math.round(video.currentTime % 60);
+    if( seconds < 10 )
+        seconds = "0"+seconds;
+
+    $('#noteTable'+IDnum).append('<tr><td colspan="1.5">'+$('#newNote'+IDnum).val()+' (<a href="#" onclick="goToNote('+video.currentTime+','+ID+');">'+minutes+':'+seconds+'</a>)</td></tr>');
+
+    $('#newNote'+IDnum).val("");
+
+    postNote(IDnum, document.getElementById('noteTable'+IDnum).innerHTML, video.currentTime);
+
+    video.play();
+}
+
+function goToNote(time,ID){
+
+    var video = document.getElementById(ID);
+
+    video.pause();
+    video.currentTime = time;
+    video.play();
+
+    return false;
+}
+
+function fillModal(msg){
+    var entityMap = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': '&quot;',
+        "'": '&#39;',
+        "/": '&#x2F;'
+    };
+
+    function escapeHtml(string) {
+        return String(string).replace(/[&<>"'\/]/g, function (s) {
+                return entityMap[s];
+                });
+    }
+
+    msg = escapeHtml(msg);
+
+    while(msg.indexOf("*") !== -1){
+        msg = msg.replace('*','<code>').replace('*','</code>');
+    }
+
+    document.getElementById("longd").innerHTML=msg;
+}
+
+function writeFeedback( feedbackString, ID) {
+    var output;
+    //check if feedbackString == 'good' or 'bad' or empty
+    if( feedbackString == 'good') {
+        output= "<h4> <span style='color:green;' class= 'glyphicon glyphicon-thumbs-up'></span> GOOD JOB! No errors were found. </h4>";
+    }
+    else if ( feedbackString.indexOf("Print") !== -1) {
+        //output= "<h4>".concat(feedbackString).concat("</h4>");
+        output= '<h4>Please <strong style="color:red">delete</strong> any <em style="color:red">print( ... )</em> and <em style="color:red">show( ... )</em> statements in your submitted code. Please download the respective "Assessment notebook" from POCO to your computer and code if you need to check things with <em>print( ... )</em> or <em>show( ...)</em> statements.</h4>';
+    }
+    else if ( feedbackString == ''){
+        output= "<h4> Submit your code to receive feedback. </h4>";
+    }
+    else {
+        //else, setup table
+        var arrayOfLines = feedbackString.match(/[^\r\n]+/g);
+        var n = arrayOfLines.length;
+        var counter=0;
+
+        var outputTable = "<table class='table table-condensed table-border table-responsive'>";
+        outputTable += "<thead><tr>";
+        outputTable += "<th><center></center></th><th>Name</th><th>Short Description</th><th>Long Description</th>";
+        outputTable += "</tr></thead>";
+        outputTable += "<tbody>";
+        for (i = 0; i < n; i++) {
+            obj = JSON.parse(arrayOfLines[i]);
+            for (var key in obj) {
+                if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                    var val = obj[key];
+                    console.log(key,val);
+                    var name = val['Name'];
+                    var shortd = val['Short'];
+                    var longd = val['Long'];
+                    console.log(longd) // need to escape html chars
+                        longd = longd.replace(/'/g, "*");
+
+                    var cell1 = "<td><center><span style='color:red;' class= 'glyphicon glyphicon-thumbs-down'></span></center></td>";
+                    var cell2 = "<td>"+name+"</td>";
+                    var cell3 = "<td>"+shortd+"</td>";
+                    var cell4 = "<td><button type='button' class='btn btn-default btn-md btn-block' data-toggle='modal' data-target='#longdModal'";
+                    cell4 += " onclick=\"fillModal('"+longd+"')\""
+                        cell4 += ">Tell me more</button></td>";
+
+                    outputTable += "<tr class='table-border danger'>".concat(cell1).concat(cell2).concat(cell3).concat(cell4).concat("</tr>");
+                }
+            }
+        }
+        outputTable += "</tbody></table>";
+        output = outputTable;
+    }
+    return output;
+}
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+            console.log('User signed out.');
+            });
+}
+
+</script>
+
+</head>
+
+
+<body onload="init();">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="padding-left:10px;padding-right:10px;margin:0px;">
+    <div class="container-fluid" style="padding-bottom:0px;">
+        <div class="navbar-header"  style="padding-bottom:0px;">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'main:profile' object.pk %}" style="font-size:22px;">Poco</a>
+        </div>
+
+        <div  style="padding-bottom:0px;">
+            <p class="navbar-text navbar-right">Signed in as <a href="{% url 'main:login' %}" class="navbar-link">{{request.user.email}}</a></p>
+        </div>
+
+    </div>
+    <div style="padding-left:10px;padding-right:10px;">
+        <ol class="breadcrumb" style="background:#eee;">
+            <li><a href="{% url 'main:login' %}">Home</a></li>
+            <li><a href="{% url 'main:profile' pk=object.pk %}">Courses</a></li>
+            <li><a href="{% url 'main:menu' pk=object.pk course=module_obj.course.title|slugify %}">Course Modules</a></li>
+            <li class="active">Module Lesson</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron" style="padding-bottom:5px;padding-top:110px;">
+    <div class="container-fluid">
+        <br/>
+        <img src="{{STATIC_URL}}images/i15.png" width="48px" height="48px" style="float:left; margin-right:10px; margin-top:12px;"/>
+
+        <h2>{{module_obj.title}}</h2>
+        <p>{{module_obj.description}}</p>
+
+        <br/>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div id="main-content" class="col-lg-12 col-md-12 col-sm-12">
+
+            <!-- Nav tabs -->
+
+            <div class="nav-tabs-affix" data-spy="affix" data-offset-top="250">
+                <ul class="nav nav-tabs nav-justified" role="tablist" id="myTab" >
+                    <li role="presentation" class="active"><a id="otherTab" href="#contents" aria-controls="content" role="tab" data-toggle="tab">Content</a></li>
+                    <li role="presentation"><a id="otherTab" href="#debug" aria-controls="debug" role="tab" data-toggle="tab">Python Tube</a></li>
+                    <li role="presentation"><a id="assessmentTab" href="#assessment" aria-controls="assessment" role="tab" data-toggle="tab">Assessment</a></li>
+                    <li role="presentation"><a id="otherTab" href="#other" aria-controls="other" role="tab" data-toggle="tab">Other</a></li>
+                </ul>
+            </div>
+
+            <!-- Tab panes -->
+            <div class="tab-content" style="border: 1px ; border-top: 1px; height:100%; overflow-y:content;" id="content">
+
+                <div role="tabpanel" class="tab-pane active" id="contents">
+                    {% for content in contents%}
+                    <iframe id="iframe" src="{{content.html_notebook.url}}" style="border:0px;" height=1000% width=95%></iframe>
+                    {% endfor %}
+
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="debug">
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4" style="background-color:#eee;border-radius:10px;height:100%">
+                                <br/>
+                                <div id ="video-menu">
+                                    <h4 style="text-align:center;"> Video menu</h4>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        {%for video in videos%}
+                                        <li><a class="btn btn-primary btn{{video.id}} btn-xs col-lg-12" onclick="videoClick({{video.id}})" style="text-align:left;border:#eee;background:white;color:black;margin-bottom:4px;white-space: normal;" role="button" data-toggle="collapse" data-target=".demo{{video.id}}" aria-expanded="false" aria-controls="demo{{video.id}}">
+                                            <span class="glyphicon glyphicon-collapse-down"></span>
+                                            {{video.title}}
+                                        </a></li>
+                                        {%endfor%}
+                                    </ul>
+                                </div>
+                                <div id="video-notes">
+                                    {%for video in videos%}
+                                    {% for vp in object.students.videoprogress_set.all %}
+                                    {% if video == vp.video%}
+                                    <div id="{{video.id}}" class="collapse demo{{video.id}}">
+                                        <table id="noteTable{{video.id}}" class="table table-responsive">
+                                            {% if vp.video_notes %}
+                                            {{vp.video_notes|safe}}
+                                            {% else %}
+                                            <tr>
+                                                <td style="border:none;">
+                                                    <textarea autofocus id="newNote{{video.id}}" rows="2" style="width:100%" onfocus="takeNote(true, 'video_{{video.id}}');" onblur="takeNote(false, 'video_{{video.id}}');"></textarea>
+                                                </td>
+                                                <td valign="middle" style="border:none; vertical-align:middle;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border:none;text-align:left;">
+                                                    <button type="button" class="btn btn-primary btn-sm" onclick="saveNote('video_{{video.id}}');">Save Note</button>
+                                                </td>
+                                                <td valign="middle" style="border:none; vertical-align:middle;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border:none;">
+                                                    <b>Notes:</b>
+                                                </td>
+                                                <td style="border:none;">
+                                                    &nbsp;
+                                                </td>
+                                            </tr>
+                                            {% endif %}
+                                        </table><hr/>
+                                    </div>
+
+                                    {% endif %}
+                                    {%endfor%}
+                                    {%endfor%}
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-8 col-md-8 col-sm-8" >
+                                {%for video in videos%}
+                                <div id="demo{{video.id}}" class="collapse demo{{video.id}}">
+                                    <center><h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;"> {{video.title}} </h3></center>
+                                    <div class="embed-responsive embed-responsive-4by3">
+                                        <video class="embed-responsive-item" id="video_{{video.id}}" controls width=100%>
+                                            <source src='{{video.video_URL}}' type='video/mp4'>
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                </div>
+                                {%endfor%}
+
+                                {%for video in videos%}
+                                <script>
+$(document).ready(function(){
+        $(".demo{{video.id}}").on("hide.bs.collapse", function(){
+            $(".btn{{video.id}}").html('<span class="glyphicon glyphicon-collapse-down" style="color:black"></span> {{video.title}}');
+            document.getElementById("video_{{video.id}}").pause();
+            });
+        $(".demo{{video.id}}").on("show.bs.collapse", function(){
+            $(".btn{{video.id}}").html('<span class="glyphicon glyphicon-collapse-up" style="color:#428bca"></span>  {{video.title}}');
+            });
+        });
+                                </script>
+                                {%endfor%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="assessment" style="background: white;">
+                    <div id=triple>
+                        <!-- Start Assessment triple -->
+                        {% for assessment in assessments %}
+                        {% for ap in object.students.assessmentprogress_set.all %}
+                        {% if assessment == ap.assessment %}
+                        <div class="panel panel-default" style="border:0;">
+                            <div class="panel-body"> {{ assessment.description|safe }}
+                            </div>
+                        </div>
+                        <div class="panel panel-default" style="border:0;">
+                            <div class="panel-body">
+                                <!-- CODE EDITOR GOES HERE.-->
+                                <textarea id="code-{{assessment.id}}" name="code_id{{assessment.id}}" >{% if not ap.code_submission %}{{assessment.code_editor_filler}}{% else %}{{ap.code_submission}}{% endif %}&#13;&#10;</textarea>
+                                <br/>
+                                <button id="spinnerbtn_{{assessment.id}}" type="button" class="btn btn-default has-spinner" onclick="submitCode('code-{{assessment.id}}',{{forloop.parentloop.counter0}})">
+                                    <span class="spinner"><i class="icon-spin icon-refresh"><img src="http://assets2.bostonlogic.com/images/spinner.gif" width="10" height="10"></i></span>
+                                    Submit Code
+                                </button>
+
+                                <!-- ************** -->
+                                <!--button type="button" class="btn btn-danger" onclick="submitQuestion({{assessment.order}}, {{forloop.parentloop.counter0}})">Ask question
+                                </button-->
+                                <button type="button" class="btn btn-danger" onclick="submitQuestion({{assessment.order}}, {{forloop.parentloop.counter0}}, '{{ap.errors_list|escapejs}}')">Ask question
+                                </button>
+                                <!-- ************** -->
+
+                            </div>
+                        </div>
+                        <div class="panel panel-default" style="border:0;">
+                            <!-- OUTPUT/TEST RESULTS GO HERE. -->
+                            <div class="panel-body">
+
+                                <p id="result_{{assessment.id}}"></p>
+                                <script>
+var feedback = writeFeedback('{{ap.errors_list|escapejs}}', '{{assessment.id}}');
+console.log(feedback);
+document.getElementById('result_{{assessment.id}}').innerHTML = feedback;
+                                </script>
+
+                            </div>
+                        </div>
+                        <!-- End triple -->
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="botModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">
+                                    <!--img src="{{STATIC_URL}}images/chatbot.jpg" width="100" height="75"-->
+                                    <span style="display:inline-block; width: 10;"></span>
+                                    Ask a question and I'll make sure it is discussed during next class. </h4>
+                                    <!--hr><h4 style="color: red"><strong>Under Construction</strong></h4-->
+                                    <hr><p> Module: {{module_obj.title}}</p>
+                                    <p id="challenge"></p>
+                                    <!--<p> TO: Professor Fickas</p>-->
+                                    <!--<p> FROM: {{object.first_name}} {{object.last_name}}</p>-->
+                            </div>
+                            <div class="modal-body">
+                                <p>Submit your question here:</p>
+                                <!--textarea rows="4" cols="50"></textarea-->
+                                <p><center><textarea id="modalMessage" style="background:#FFFFE0;width:100%;" rows="9"></textarea></center></p>
+                                <span id="footer"></span>
+                            </div>
+                            <div class="modal-footer">
+                                <!--p align="left">Display previous conversation here. </p--><br/>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="longdModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Long Description</h4>
+                            </div>
+                            <div class="modal-body">
+                                <span id="longd"> empty </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="other">
+                    <center>
+                        <hr>
+                        <p>To interact with the notebook displayed in the content tab you'll need the .ipynb file in your pythonanywhere folder </p>
+                        <hr>
+                    </center>
+                    <h4>Available downlads:</h4>
+                    &emsp;<table class="table-striped table-condensed table-border table-responsive">
+                        <thead><tr style="background-color:#eee">
+                                <th>Description</th><th>&emsp;Downloadable File</th>
+                        </tr></thead>
+                        <tbody>
+                        {% for related_item in relateds %}
+                        <tr>
+                            <td>{{related_item.description}}</td>
+                            <td>&emsp;<a href="{{related_item.notebook.url}}" download>{{related_item.title}}</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        </div>
+
+        <script>
+var editors = [];
+{% for assessment in assessments %}
+editors[{{forloop.counter0}}] = CodeMirror.fromTextArea(document.getElementById("code-{{assessment.id}}"), {
+mode: {name: "python",
+version: 3,
+singleLineStringErrors: false},
+lineNumbers: true,
+indentUnit: 4,
+indentWithTabs:true,
+matchBrackets: true,
+autoRefresh: true,
+});
+setTimeout(function() {
+        editors[{{forloop.counter0}}].refresh()
+        }, 1);
+{% endfor %}
+
+        </script>
+        <script>
+function videoClick(videoID) {
+    var csrftoken = Cookies.get('csrftoken');
+
+    $.ajax({
+method: "POST",
+url: "{{request.path}}",
+beforeSend: function( xhr ) {
+xhr.setRequestHeader("X-CSRFToken", csrftoken);
+},
+data: { videoID: videoID , video_click: "True" }
+
+})
+.done(function( response) {
+        console.log( "Note saved to DB: " + response);
+        });
+}
+
+function contentClick(contentID) {
+    var csrftoken = Cookies.get('csrftoken');
+
+    $.ajax({
+method: "POST",
+url: "{{request.path}}",
+beforeSend: function( xhr ) {
+xhr.setRequestHeader("X-CSRFToken", csrftoken);
+},
+data: { contentID: contentID , content_click: "True"}
+
+})
+.done(function( response) {
+        console.log( "Note saved to DB: " + response);
+        });
+}
+
+
+
+//****************
+//function submitQuestion(challengeID, idx) {
+function submitQuestion(challengeID, idx, errorList) {
+//****************
+
+    // send txt in modal to Profs email
+    // modal should show thread convo for Q and A btwn student/prof
+    // post student Q to server
+    //alert(moduleName + '\nChallenge ' + challengeID);
+
+
+    //****************
+    //console.log('{{object.id}}');
+    //console.log('{{object.first_name}}');
+    //console.log('{{object.last_name}}');
+    //console.log('{{object.email}}');
+    //var stud_id = '{{Student.objects}}';
+    //console.log(stud_id);
+    //console.log(errorList);
+    var error_message = "'" + getErrorMessage(errorList) + "'";
+    //console.log(error_message);
+    //return;
+    //****************
+
+    var text1 = '<p>Challenge ' + challengeID + '</p>';
+    //text += '<div id="modalMessage_'+challengeID+'">';
+/*
+    text += '<div>';
+
+    //text += '<p><center><textarea style="background:#FFFFE0;width:100%;" rows="9">Submit your question here.&#13;&#10;&#13;&#10;{{object.first_name}}&nbsp;{{object.last_name}}&#13;&#10;{{object.email}}</textarea></center></p>';
+    text += '<p><center><textarea id="modalMessage" style="background:#FFFFE0;width:100%;" rows="9">Submit your question here11.</textarea></center></p>';
+    text += '</div>';
+*/
+    var text2 = '<p>{{object.first_name}}&nbsp;{{object.last_name}}</p>';
+    text2 += '<p>{{object.email}}</p>';
+
+
+    //****************
+    //text2 += "<button type='button' id='myButton' class='btn btn-primary' onclick='sendMessage(" +challengeID+ "," +idx+ ")'>Send Message</button>";
+
+    //text2 += '<button type="button" id="myButton" class="btn btn-primary" onclick="sendMessage(' +challengeID+ ',' +idx+ ",'this is the error message'" +')">Send Message</button>';
+    text2 += '<button type="button" id="myButton" class="btn btn-primary" onclick="sendMessage(' +challengeID+ ',' +idx+ ',' +error_message+ ')">Send Message</button>';
+
+    //text2 += '<button type="button" id="myButton" class="btn btn-primary" onclick="sendMessage(' +challengeID+ ',' +idx+ ',';
+    //text2 += "'" + error_message+ "'";
+    //text2 += ')">Send Message</button>";
+    //console.log(text2);
+    //****************
+
+
+    //$('#botModal #modalMessage').val('Submit your question here.');
+    $('#botModal #modalMessage').val('');
+    //$('#botModal #modalMessage').focus();
+
+    //$('#botModal .modal-body').html(text);
+    $('#botModal #challenge').html(text1);
+    $('#botModal #footer').html(text2);
+
+    $('#botModal').modal('show')
+}
+
+function sendMessage(challengeID, idx, error_message) {
+//function sendMessage(challengeID) {
+    //var idx = 0;
+
+    //****************
+    //console.log(error_message);
+    //return;
+    //****************
+
+    //$('#botModal #modalMessage').html('text');
+
+    //message = $("#modalMessage_"+challengeID).text();
+    var message = $('#botModal #modalMessage').val();
+
+    if (message.replace(/(\r\n|\n|\r|\s)/gm,"").length == 0){
+        var text = '<p style="color: red">Blank message! Did not send.</p>';
+        var modal_title = 'Message not sent';
+    }
+    else {
+        message = $.trim(message);
+        console.log(message);
+
+        postEmailMessage(message, challengeID, idx, error_message);
+        var text = '<p style="color: LimeGreen">Your message about Challenge ' + challengeID + ' was successfully sent.</p>';
+        //var text = "<p style='color: red'>Under construction message was not actually sent.</p>";
+        var modal_title = 'Message sent';
+    }
+
+
+    //$(".modal-body").html(text);
+    $("#botModal #footer").html(text);
+    $(".modal-title").html(modal_title);
+    console.log(message);
+    return;
+
+}
+
+function postEmailMessage(message, challengeID, idx, error_message) {
+    //message = 'Module: {{module_obj.title}}\n' + 'Challenge: ' + challengeID + '\n\n' + message;
+
+    //****************
+    console.log(error_message);
+    //return;
+    //****************
+
+    var course_title = '{{module_obj.course.title}}';
+    var module_title = '{{module_obj.title}}';
+    console.log(course_title);
+
+    //alert(message);
+    //alert('Module: {{module_obj.title}}\n'+ message+ '\nChallenge: ' + challengeID);
+
+    //from_address = '{{object.first_name}} {{object.last_name}} <{{object.email}}>';
+    var stud_first_name = '{{object.first_name}}';
+    var stud_last_name = '{{object.last_name}}';
+    var stud_email = '{{object.email}}';
+
+    //console.log('Challenge: ' + challengeID);
+    //console.log('idx: ' + idx);
+
+    var code = editors[idx].getValue();
+    console.log(code);
+
+    if (code.replace(/(\r\n|\n|\r|\s)/gm,"").length == 0){
+        code = '#Empty';
+    }
+    code = $.trim(code);
+    console.log(code);
+
+
+
+    var csrftoken = Cookies.get('csrftoken');
+
+    $.ajax({
+            method: "POST",
+            url: "{{request.path}}",
+            beforeSend: function( xhr ) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            },
+            //data: { messageContents: message , from_address: from_address}
+            data: { messageContents: message , error_message: error_message, course_title: course_title, module_title: module_title, challengeID: challengeID, stud_first_name: stud_first_name, stud_last_name: stud_last_name, stud_email: stud_email, stud_code: code}
+
+          })
+            .done(function( response) {
+                    console.log( "email sent: " + response);
+            });
+
+
+}
+
+
+//*******************
+function getErrorMessage( feedbackString) {
+    var output;
+    //check if feedbackString == 'good' or 'bad' or empty
+    if( feedbackString == 'good' || feedbackString == '') {
+        output= "No errors present";
+    }
+    else if ( feedbackString.indexOf("Print") !== -1) {
+        output= feedbackString;
+    }
+    else {
+        var arrayOfLines = feedbackString.match(/[^\r\n]+/g);
+        var n = arrayOfLines.length;
+        var counter=0;
+
+        var outputTable = "";
+        for (i = 0; i < n; i++) {
+            obj = JSON.parse(arrayOfLines[i]);
+            for (var key in obj) {
+                if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                    var val = obj[key];
+                    //console.log(key,val);
+                    //var name = val['Name'];
+                    var shortd = val['Short'];
+                    var longd = val['Long'];
+                    //console.log(longd) // need to escape html chars
+                    longd = longd.replace(/'/g, "*");
+                    shortd = shortd.replace(/'/g, "*");
+
+                    //output = 'Long: ' + longd;
+
+                    output = "Short: " + shortd + "  |       Long: " + longd;
+                }
+            }
+        }
+    }
+    return output;
+}
+
+//*******************
+
+
+
+
+
+function submitCode(codemirrorID, idx) {
+    console.log(codemirrorID);
+    console.log(idx);
+    var code = editors[idx].getValue();
+    console.log(code);
+
+    var csrftoken = Cookies.get('csrftoken');
+    var code_assessmentID = codemirrorID.split("-").pop();
+
+    if (code.replace(/(\r\n|\n|\r|\s)/gm,"").length == 0){
+        var feedback  = writeFeedback('', code_assessmentID);
+        document.getElementById('result_'+code_assessmentID).innerHTML = feedback;
+        return;
+    }
+
+    // clear output area
+    document.getElementById('result_'+code_assessmentID).innerHTML = "";
+    //begin spinner
+    $('#spinnerbtn_'+code_assessmentID).toggleClass('active');
+
+    $.ajax({
+method: "POST",
+url: "{{request.path}}",
+beforeSend: function( xhr ) {
+xhr.setRequestHeader("X-CSRFToken", csrftoken);
+},
+data: { assessmentID: code_assessmentID , submittedcode: code}
+
+})
+.done(function( response) {
+        //end spinner
+        $('#spinnerbtn_'+code_assessmentID).toggleClass('active');
+        console.log( "Data Saved: " + response);
+        var feedback = writeFeedback( response, code_assessmentID);
+        console.log(feedback);
+        document.getElementById('result_'+code_assessmentID).innerHTML = feedback;
+        });
+}
+
+
+
+        </script>
+
+        </body>
+        </html>

@@ -1,0 +1,141 @@
+<html>
+
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Poco Modules</title>
+
+    <link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}images/favicon.ico"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <script src="{{STATIC_URL}}jquery/dist/jquery.js"></script>
+    <script src="{{STATIC_URL}}bootstrap/js/bootstrap.js"></script>
+    <script src="{{STATIC_URL}}js-cookie/src/js.cookie.js"></script>
+
+	<script type="text/javascript">
+
+		function init(){
+
+            success('{{object.email}}');
+
+		}
+
+
+		function success(username){
+
+			sessionStorage.setItem('username', username);
+
+			$("#username").text(username);
+
+
+		}
+
+function notifyStart(moduleID){
+    //post to django that a module has been started s.t. button text can be changed
+
+        var csrftoken = Cookies.get('csrftoken');
+
+        $.ajax({
+            method: "POST",
+            url: "{{request.path}}",
+            beforeSend: function( xhr ) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            },
+        data: { changeButton: "True" , moduleID: moduleID } 
+        })
+        .done(function( response) {
+            console.log( "Data Saved: " + response);
+        });
+}
+	</script>
+
+</head>
+
+
+<body onload="init();">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="padding-left:10px;padding-right:10px;">
+        <div class="container-fluid" style="padding-bottom:0px;">
+            <div class="navbar-header"  style="padding-bottom:0px;">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'main:profile' object.pk %}" style="font-size:22px;">Poco</a>
+            </div>
+
+            <div  style="padding-bottom:0px;">
+                <p class="navbar-text navbar-right">Signed in as <a href="{% url 'main:login' %}" class="navbar-link">{{request.user.email}}</a></p>
+            </div>
+
+        </div>
+        <div style="padding-left:10px;padding-right:10px;">
+            <ol class="breadcrumb" style="background:#eee;">
+                <li><a href="{% url 'main:login' %}">Home</a></li>
+                <li><a href="{% url 'main:profile' pk=object.pk %}">Courses</a></li>
+                <li class="active">Course Modules</li>
+            </ol>
+        </div> 
+    </div>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron"  style="padding-bottom:5px;padding-top:110px;">
+      <div class="container-fluid">
+      	<br/>
+        <h2>Welcome to <i>{{course_obj.title}}</i></h2>
+        {% if modules %}
+        <p style="width:80%;">Below are your modules.  Each module is a set of challenges that will help you build your programming and data science skills.  Click a module below to get started.</p>
+        {% else %}
+        <br/><p> Under Development <p>
+        {% endif %}
+      </div>
+    </div>
+
+
+    <div class="container-fluid">
+	  <center>
+		  <table style="width:80%;">
+            <!-- begin for -->
+            {% for module in modules %}
+            {% for mp in object.students.moduleprogress_set.all %}
+            {% if module == mp.module %} 
+			<tr>
+				<td>
+					<nav class="navbar navbar-default">
+						<div class="container-fluid">
+							<div class="navbar-header" style="padding:15px; width:100%; line-height:150%">
+								<div style="float:right;">
+									<!--Difficulty:
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>-->
+									<br/>
+                                    {% if not mp.started %}
+                                    <a class="btn btn-primary" href="{% url 'main:lesson' pk=object.pk course=request.session.course_title module=module.id %}" role="button" onclick="notifyStart('{{module.id}}')">Start this Module</a>
+                                    {% else %}
+                                    <a class="btn btn-info" href="{% url 'main:lesson' pk=object.pk course=request.session.course_title module=module.id %}" role="button">Continue this Module</a>
+                                    {% endif %}
+								</div>
+                                <b>{{module.title}}</b>
+                                <p style="padding-top:5px;width:75%;"> {{module.description}} </p>
+							</div>
+						 </div>
+					 </nav>
+				</td>
+			</tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+            <!-- end for -->
+		  </table>
+      </center>
+
+   	</div>
+
+</body>
+
+</html>

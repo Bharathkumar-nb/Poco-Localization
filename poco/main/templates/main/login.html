@@ -1,0 +1,238 @@
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Poco</title>
+
+<link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}images/favicon.ico"/>
+
+<link rel="stylesheet" href="{{STATIC_URL}}bootstrap//dist/css/bootstrap.css" />
+
+<style>
+body {
+    background-color:#222;
+    background-image:url("{{STATIC_URL}}images/login.png");
+}
+
+hr {
+    margin-top:30px;
+    margin-bottom:30px;
+    width:100%;
+    border-top: 1px solid white;
+}
+
+.left {
+    left:0;
+    text-align:center; 
+    vertical-align: middle;
+    padding-top: 75px;
+    background-color:#222;
+    background-image:url("{{STATIC_URL}}images/login.png");
+    color:white;
+    height:100%;
+    width:100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-right: 0;
+    padding-left: 0;
+
+}
+
+.right {
+    right:0;
+    text-align:center; 
+    justify-content: center;
+    background-color:#eee;
+    vertical-align: middle;
+    height:100%;
+    width:100%;
+    padding: 150px 25px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-right: 0;
+    padding-left: 0;
+
+}
+.info{
+    font-size:16px;
+    text-align:center;
+}
+
+.crop {
+    padding-top:10px;
+    width: 385px;
+    height: 210px;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.crop img {
+    width: 385px;
+    height: 250px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.title {
+    font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 70px;
+    padding-top:10px;
+    padding-bottom:5px;
+}
+
+#description{
+    font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 22px;
+}
+</style>
+
+<script src="../../static/jquery/dist/jquery.js"></script>
+<script src="../../static/bootstrap//dist/js/bootstrap.js"></script>
+
+<!--script src="../../../js/DecimalFormat.js"></script-->
+
+
+<!--script src="js/jquery.mobile-1.1.0-rc.1.js"></script-->
+<!--script src="js/jgestures.min.js"></script-->
+<!--<script src="{{STATIC_URL}}js/jquery.js"></script-->
+
+<script src="{{STATIC_URL}}js-cookie/src/js.cookie.js"></script>
+
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="">
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script type="text/javascript">
+<!--
+
+function submitOnEnter(myfield, e){
+    var keycode;
+    if(window.event)
+        keycode = window.event.keyCode;
+    else if(e)
+        keycode = e.which;
+    else
+        return true;
+
+    if (keycode == 13){
+        myfield.form.submit();
+        return false;
+    }else
+        return true;
+}
+
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+
+function init(){
+
+    var login = getParameterByName('login');
+
+
+    if( login != null && login == "incorrect" ){
+
+        console.log("Show incorrect message");
+        $("#alert").show();
+    }
+
+}
+
+
+
+-->
+</script>
+
+</head>
+
+
+<body onload="init();">
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-md-7 col-sm-7" >
+            <div class="left">
+                <div class="title">Welcome to Poco</div>
+                <div class="crop">
+                    <img src="{{STATIC_URL}}images/logo.png" > 
+                </div>
+                <hr/>
+                <div id="description"><p>Poco offers a set of courses that are based on the Python programming language. None of the
+                courses assume you know programming - they start from scratch. Each course is aimed at
+                giving you practical skills that you can use in your work or your personal life. We hope
+                you find something that piques your interest.</p></div>
+            </div>
+            </div>
+            </div>
+            <div class="col-md-5 col-sm-5">
+                <div class="right">
+                    <div class="container-fluid" style="width:100%">
+                        <div class="info">
+                            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="display:inline-block;padding-bottom: 20px;padding-top: 20px;"></div>
+                            <div id="message" class="message"></div>
+                            </br>
+                            <a href="" onclick="signOut();">Sign out</a>
+                        </div>
+
+                        <script>
+function onSignIn(googleUser) {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+
+    //window.location.href = "login.html";
+    // Send the ID token to your server with an HTTPS POST request
+    var xhr = new XMLHttpRequest();
+    var csrftoken = Cookies.get('csrftoken');
+    xhr.open('POST', '/main/login/');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    xhr.onload = function() {
+        console.log('Signed in as: ' + xhr.responseText);
+        console.log('response: ' + xhr.response);
+        var obj = JSON.parse(xhr.responseText) ;
+        var pk = obj['pk'];
+        var url_mask = "{% url 'main:profile' 'tmp' %}".replace('tmp',pk);
+        console.log(url_mask);
+        document.getElementById("message").innerHTML = "Hello "+profile.getGivenName()+"!<br><br><a href="+url_mask+">Go to your profile</a>";
+    };
+    xhr.send('idtoken=' + id_token + '&csrfmiddlewaretoken=' + '{{csrf_token}}' );
+};
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+            console.log('User signed out.');
+            });
+    document.getElementById("message").innerHTML = "";
+}
+                        </script>
+                    </div> <!-- /container -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

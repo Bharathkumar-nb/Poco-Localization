@@ -1,0 +1,240 @@
+<html>
+
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Poco Courses</title>
+
+    <link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}images/favicon.ico"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <script src="{{STATIC_URL}}js-cookie/src/js.cookie.js"></script>
+    <script src="{{STATIC_URL}}jquery/dist/jquery.js"></script>
+    <script src="{{STATIC_URL}}bootstrap/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+
+		var clients = [];
+
+        function sendMail() {
+            var link = "mailto:smccumsey@gmail.com"
+                + "&subject=" + escape("This is my subject")
+                + "&body=" + escape(document.getElementById('myText').value)
+                ;
+
+            window.location.href = link;
+        }
+
+        function submitOnEnter(myfield, e){
+            var keycode;
+            if(window.event)
+              keycode = window.event.keyCode;
+            else if(e)
+              keycode = e.which;
+            else
+              return true;
+
+            if (keycode == 13){
+              myfield.form.submit();
+              return false;
+            }
+            else
+              return true;
+        }
+
+		function getParameterByName(name) {
+			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				results = regex.exec(location.search);
+			return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+
+
+		function init(){
+
+			//This gets the session token from the url.
+			var token = getParameterByName('session');
+			console.log("Token: "+ token);
+
+			if( token != null && token.length > 0 )
+				sessionStorage.setItem('token', token);
+			else
+				token = sessionStorage.getItem('token');
+
+
+            success('{{object.email}}');
+
+
+		}
+
+
+		function success(username){
+
+			sessionStorage.setItem('username', username);
+
+			$("#username").text(username);
+
+
+			var clientSelect = document.getElementById("clientSelect");
+
+		}
+
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+                console.log('User signed out.');
+                });
+    }
+
+
+	</script>
+
+</head>
+
+
+<body onload="init();">
+
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="padding-left:10px;padding-right:10px;">
+        <div class="container-fluid" style="padding-bottom:0px;">
+            <div class="navbar-header"  style="padding-bottom:0px;">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'main:profile' object.pk %}" style="font-size:22px;">Poco</a>
+            </div>
+
+            <div  style="padding-bottom:0px;">
+                <p class="navbar-text navbar-right">Signed in as <a href="{% url 'main:login' %}" class="navbar-link">{{request.user.email}}</a></p>
+            </div>
+
+        </div>
+        <div style="padding-left:10px;padding-right:10px;">
+            <ol class="breadcrumb" style="background:#eee;">
+                <li><a href="{% url 'main:login' %}">Home</a></li>
+                <li class="active">Courses</li>
+            </ol>
+        </div>
+    </div>
+
+
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron"  style="padding-bottom:5px;padding-top:110px;">
+      <div class="container-fluid">
+      	<br/>
+        <h2>Welcome to Poco</h2>
+        <br/>
+        <p style="width:95%;font-size:20px;">Poco offers a set of courses that are based on the Python programming language. None of the
+        courses assume you know programming - they start from scratch. Each course is aimed at
+        giving you practical skills that you can use in your work or your personal life. We hope
+        you find something that piques your interest.</p>
+        <p style="width:95%;font-size:20px;">Below are your courses.  Each course has a set of modules that will help you build your programming and data science skills.  Select a course below to get started</p>
+      </div>
+    </div>
+
+
+    <div class="container-fluid">
+
+
+	  <center>
+		  <table style="width:80%;">
+
+            <!-- begin for -->
+            {% for course in courses %}
+            {% for cp in object.students.courseprogress_set.all %}
+            {% if course == cp.course %}
+			<tr>
+				<td>
+					<nav class="navbar navbar-default">
+						<div class="container-fluid">
+							<div class="navbar-header" style="padding:15px; width:100%; line-height:150%">
+								<div style="float:right;">
+									<br/>
+                                  {% if cp.approved %}
+                                  <a class="btn btn-primary" href="{% url 'main:menu' pk=object.pk course=course.title|slugify %}" role="button">Explore this Course</a>
+                                  {% else %}
+                                  <a class="btn btn-primary" href="#" onclick="requestRegistration('{{course.title}}')" role="button">Explore this Course</a>
+                                  {% endif %}
+                              </div>
+                              <h2> {{course.title}} </h2>
+                                <p style="width:80%;"> {{course.description}} </p>
+							</div>
+						 </div>
+					 </nav>
+				</td>
+			</tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+            <!-- end for -->
+		  </table>
+      </center>
+
+  </div>
+    <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog modal-sm" >
+              <!-- Modal content-->
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Please register for this course</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p> empty </p>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+
+
+  <script>
+
+    function postEmailMessage(message, currentTime) {
+        //ajax post
+        var csrftoken = Cookies.get('csrftoken');
+
+        $.ajax({
+    method: "POST",
+    url: "{{request.path}}",
+    beforeSend: function( xhr ) {
+    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    },
+    data: { messageContents: message}
+
+    })
+    .done(function( response) {
+            console.log( "email sent: " + response);
+            });
+    }
+
+function sendMessage() {
+    var message = $("#modalMessage").text();
+
+    postEmailMessage(message);
+
+    var text = "<p>Your message requesting registration was successfully sent.</p>";
+    $(".modal-body").html(text);
+    $(".modal-title").html("Message sent");
+    //alert("The message wasn't actually sent to Steve... that part still needs to be done");
+}
+
+function requestRegistration(courseName) {
+    var text = "<p>Currently you are not approved to take the course <i>"+courseName+"</i>.</p>";
+    text += "<p><b> Please send Professor Fickas a message to gain access.</b></p>";
+    text += "<div id=modalMessage>";
+    text += "<p><center><textarea style='background:#FFFFE0;width:100%;' rows='9'>Hello, &#13;&#10;&#9;I would like to register for '"+courseName+"'.&nbsp;Please let me know when I've been registered.&#13;&#10;&#13;&#10;{{object.first_name}}&nbsp;{{object.last_name}}&#13;&#10;{{object.email}}</textarea></center></p>";
+    text += "</div>";
+    text += "<button type='button' id='myButton' class='btn btn-primary' onclick='sendMessage()'>Send Message</button>";
+    $(".modal-body").html(text);
+    $('#myModal').modal('show')
+}
+  </script>
+  </body>
+  </html>
