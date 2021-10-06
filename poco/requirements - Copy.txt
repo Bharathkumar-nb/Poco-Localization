@@ -350,7 +350,7 @@ s3cmd==1.6.1
 scikit-learn==0.17.1
 scikits.statsmodels==0.3.1
 scipy==0.18.0
-Scrapy==1.1.0
+Scrapy==1.8.1
 selenium==2.53.6
 service-identity==16.0.0
 setproctitle==1.1.10
