@@ -222,7 +222,7 @@ Orange-Text==1.2a1
 ordereddict==1.1
 oursql==0.9.3.2
 pandas==0.18.1
-paramiko==2.0.1
+paramiko==2.10.1
 parsel==1.0.3
 Paste==2.0.3
 PasteDeploy==1.5.2
